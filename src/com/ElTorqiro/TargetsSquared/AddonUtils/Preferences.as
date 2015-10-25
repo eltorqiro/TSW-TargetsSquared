@@ -47,14 +47,14 @@ class com.ElTorqiro.TargetsSquared.AddonUtils.Preferences {
 	 * 
 	 * @param	name
 	 * @param	defaultvalue
-	 * @param	validate	either a function that is called on setVal [ validate(newValue, oldValue) must return the validated new value ] or an object containing min/max values
+	 * @param	validator	either a function that is called on setVal [ validator(newValue, oldValue) must return the validated new value ] or an object containing min/max values
 	 */
-	public function add( name:String, defaultValue, validate ) : Void {
+	public function add( name:String, defaultValue, validator ) : Void {
 		
 		prefs[ name ] = {
 				value: defaultValue,
 				defaultValue: defaultValue,
-				validate: validate
+				validator: validator
 		};
 		
 	}
@@ -110,7 +110,7 @@ class com.ElTorqiro.TargetsSquared.AddonUtils.Preferences {
 
 		var newValue = value;
 		
-		var validator = prefs[name].validate;
+		var validator = prefs[name].validator;
 		if ( validator ) {
 			if ( typeof(validator) == "function" ) {
 				newValue = validator( newValue, oldValue );
