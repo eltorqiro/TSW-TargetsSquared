@@ -15,14 +15,14 @@ ElTorqiro_TargetsSquared is a target tracking module, which allows you to see wh
 Join the conversation with feedback, bug reports, and update information on the official TSW forums at https://forums.thesecretworld.com/showthread.php?94295-MOD-ElTorqiro_TargetsSquared
    
    
-Donations
----------
-I don't accept real-money donations for my mods.  If you would like to show your support, you can do so by sending in-game pax to my character Tufenuf.  I will use it to buy the in-game items I would otherwise have been able to grind out myself, if I weren't spending time writing mods.
-  
-  
 Important Notes
 ---------------
 * Remember that this shows you your offensive target's targets, so unless you are targeting a mob or player that has targeted something, there won't be anything on your screen.
+  
+  
+Donations
+---------
+I don't accept real-money donations for my mods.  If you would like to show your support, you can do so by sending in-game pax to my character Tufenuf.  I will use it to buy the in-game items I would otherwise have been able to grind out myself, if I weren't spending time writing mods.
   
   
 Configuration
