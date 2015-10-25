@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?> 
+
+<Root>
+  <Value name="ElTorqiro_TargetsSquared" value="true" />
+  <Value name="ElTorqiro_TargetsSquared_Debug" value="false" />
+  <Archive name="ElTorqiro_TargetsSquared_Preferences" />
+</Root>
