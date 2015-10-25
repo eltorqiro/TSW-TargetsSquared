@@ -153,7 +153,7 @@ class com.ElTorqiro.TargetsSquared.AppIcon extends MovieClip {
 		td.AddAttributeSplitter();
 		td.AddAttribute( "", "" );
 		
-		td.AddAttribute("", "<font face=\'_StandardFont\' size=\'11\' color=\'#BFBFBF\'><b>Left Click</b> Open/Close configuration window.</font>");
+		td.AddAttribute("", "<font face=\'_StandardFont\' size=\'11\' color=\'#BFBFBF\'><b>Left Click</b> Open/Close configuration window.\n<b>Right Click</b> Toggle HUD on/off.</font>");
 		
 		td.m_Padding = 8;
 		td.m_MaxWidth = 256;
