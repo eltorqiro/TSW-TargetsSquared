@@ -67,39 +67,6 @@ class com.ElTorqiro.TargetsSquared.ConfigWindow.WindowContent extends com.Compon
 				},
 				
 				{	type: "section",
-					label: "Width"
-				},
-				
-				{	id: "hud.bar.size.x",
-					type: "slider",
-					min: 60,
-					max: 100,
-					valueFormat: "%i%%",
-					label: "Box Width",
-					tooltip: "The width scale of target boxes.",
-					data: { pref: "hud.bar.size.x" }
-				},
-
-				{	type: "group"
-				},
-				
-				{	id: "hud.bar.autosize",
-					type: "dropdown",
-					label: "AutoSize",
-					tooltip: "The auto size type to use for horizontally sizing the box based on the length of the target name.",
-					data: { pref: "hud.bar.autosize" },
-					list: [
-						{ label: "None (manual)", value: Const.e_AutoSizeNone },
-						{ label: "Left Aligned", value: Const.e_AutoSizeLeft },
-						{ label: "Right Aligned", value: Const.e_AutoSizeRight }
-					]
-				},
-
-				{	type: "text",
-					text: "AutoSize is only applied if the health bar is hidden, in which case Box Width defines the maximum available width before the target name is truncated."
-				},
-				
-				{	type: "section",
 					label: "Health Bar"
 				},
 
@@ -215,6 +182,39 @@ class com.ElTorqiro.TargetsSquared.ConfigWindow.WindowContent extends com.Compon
 				},
 				
 				{	type: "column"
+				},
+
+				{	type: "section",
+					label: "Width"
+				},
+				
+				{	id: "hud.bar.size.x",
+					type: "slider",
+					min: 60,
+					max: 100,
+					valueFormat: "%i%%",
+					label: "Box Width",
+					tooltip: "The width scale of target boxes.",
+					data: { pref: "hud.bar.size.x" }
+				},
+
+				{	type: "group"
+				},
+				
+				{	id: "hud.bar.autosize",
+					type: "dropdown",
+					label: "AutoSize",
+					tooltip: "The auto size type to use for horizontally sizing the box based on the length of the target name.",
+					data: { pref: "hud.bar.autosize" },
+					list: [
+						{ label: "None (manual)", value: Const.e_AutoSizeNone },
+						{ label: "Left Aligned", value: Const.e_AutoSizeLeft },
+						{ label: "Right Aligned", value: Const.e_AutoSizeRight }
+					]
+				},
+
+				{	type: "text",
+					text: "AutoSize is only applied if the health bar is hidden, in which case Box Width defines the maximum available width before the target name is truncated."
 				},
 				
 				{	type: "section",

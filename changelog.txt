@@ -1,3 +1,9 @@
+1.1.0 -- 2015-10-27
+
+ + added ability to autosize the bar, with left & right alignment options
+ + added right-click text to app icon tooltip; the right click always worked, but there was no text describing what it did
+ 
+
 1.0.0 -- 2015-10-25
 
  ! initial release

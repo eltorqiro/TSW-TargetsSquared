@@ -13,7 +13,7 @@ class com.ElTorqiro.TargetsSquared.Const {
 	public static var AppID:String = "ElTorqiro_TargetsSquared";
 	public static var AppName:String = "TargetsSquared";
 	public static var AppAuthor:String = "ElTorqiro";
-	public static var AppVersion:String = "1.0.0";
+	public static var AppVersion:String = "1.1.0";
 
 	public static var DebugModeDV:String = "ElTorqiro_TargetsSquared_Debug";
 	
