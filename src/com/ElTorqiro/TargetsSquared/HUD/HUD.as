@@ -92,7 +92,7 @@ class com.ElTorqiro.TargetsSquared.HUD.HUD extends UIComponent {
 		target.SignalOffensiveTargetChanged.Disconnect( enemyChanged, this );
 		target.SignalDefensiveTargetChanged.Disconnect( allyChanged, this );
 
-		var newTargetId:ID32 = Character.GetClientCharacter().GetOffensiveTarget()
+		var newTargetId:ID32 = Character.GetClientCharacter().GetOffensiveTarget();
 		
 		// only apply if dynel is a character (i.e. not doors/ladders etc)
 		target = newTargetId.GetType() == _global.Enums.TypeID.e_Type_GC_Character ? Character.GetCharacter( newTargetId ) : undefined;

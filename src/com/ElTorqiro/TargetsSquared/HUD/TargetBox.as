@@ -1,4 +1,3 @@
-import flash.filters.DropShadowFilter;
 import gfx.core.UIComponent;
 
 import flash.filters.GlowFilter;
@@ -10,6 +9,7 @@ import com.Utils.Signal;
 import com.GameInterface.DistributedValue;
 import flash.geom.Point;
 import com.GameInterface.Game.TargetingInterface;
+import mx.utils.Delegate;
 
 import com.ElTorqiro.TargetsSquared.App;
 import com.ElTorqiro.TargetsSquared.Const;
@@ -36,6 +36,10 @@ class com.ElTorqiro.TargetsSquared.HUD.TargetBox extends UIComponent {
 		
 	public function configUI() : Void {
 
+		nameField.autoSize = "left";
+		
+		background.onPress = Delegate.create( this, pressHandler );
+		
 		// position "next shield" icons above the health bar rather than to the right of it
 		healthBar.SetShieldsOnTop( true );
 		
@@ -57,7 +61,7 @@ class com.ElTorqiro.TargetsSquared.HUD.TargetBox extends UIComponent {
 		
 		// listen for pref changes
 		App.prefs.SignalValueChanged.Connect( prefChangeHandler, this );
-		
+
 		layoutIsInvalid = true;
 	}
 
@@ -83,18 +87,14 @@ class com.ElTorqiro.TargetsSquared.HUD.TargetBox extends UIComponent {
 		healthBar.SetShowText( Boolean(textType) );
 
 		var padding:Number = App.prefs.getVal( "hud.bar.background.padding" );
-		
-		icon._width = icon._height = 12;
-		icon._x = padding + 1;
-		icon._y = padding;
-		
-		nameField._x = icon._x + icon._width + 6;
-		nameField._y = padding - 3.5;
 
 		var healthBarOffset:Number = Math.floor( Math.max(xSize - 1 - 60, 0) / 20 );
 		healthBar._x = padding + healthBarOffset;
 
-		background._width = Math.round( healthBar._x + healthBar["m_Bar"]._width + padding ) + healthBarOffset + (xSize > 65 ? 1 : 0);
+		availableWidth = Math.round( healthBar._x + healthBar["m_Bar"]._width + padding ) + healthBarOffset + (xSize > 65 ? 1 : 0);
+
+		icon._y = padding;
+		nameField._y = padding - 3.5;
 		
 		if ( showHealthBar ) {
 			healthBar._xscale = healthBar._yscale = 100;
@@ -110,10 +110,7 @@ class com.ElTorqiro.TargetsSquared.HUD.TargetBox extends UIComponent {
 			background._height = Math.round( icon._y + icon._height + padding + 1 );
 		}
 		
-		glow._width = background._width;
 		glow._height = background._height;
-		
-		nameField._width = background._width - nameField._x - padding;
 		
 		SignalGeometryChanged.Emit();
 		
@@ -133,20 +130,63 @@ class com.ElTorqiro.TargetsSquared.HUD.TargetBox extends UIComponent {
 			return;
 		}
 
-		// update namefield text
+		// handle justification of title section
 		nameField.text = _character.GetName();
-		Utils.TruncateText( nameField );
+		var padding:Number = App.prefs.getVal( "hud.bar.background.padding" );
+		var autoSize:Number = App.prefs.getVal( "hud.bar.autosize" );
+		
+		if ( App.prefs.getVal( "hud.bar.healthbar.enable" ) || autoSize == Const.e_AutoSizeNone ) {
 
+			background._x = 0;
+			background._width = availableWidth;
+
+			icon._x = padding + 1;
+			nameField._x = icon._x + icon._width + 6;
+		
+			var maxNameFieldWidth:Number = availableWidth - nameField._x - padding;
+			nameField._width = Math.min( maxNameFieldWidth, Math.round( nameField.textWidth + 5 ) );
+		}
+		
+		else if ( autoSize == Const.e_AutoSizeLeft ) {
+			
+			background._x = 0;
+			icon._x = padding + 1;
+			nameField._x = icon._x + icon._width + 6;
+
+			var maxNameFieldWidth:Number = availableWidth - nameField._x - padding;
+			nameField._width = Math.min( maxNameFieldWidth, Math.round( nameField.textWidth + 5 ) );
+			
+			background._width = Math.round( nameField._x + nameField._width + padding );
+		}
+		
+		else if ( autoSize == Const.e_AutoSizeRight ) {
+			
+			var maxNameFieldWidth:Number = availableWidth - icon._width - 6 - padding * 2;
+			nameField._width = Math.min( maxNameFieldWidth, Math.round( nameField.textWidth + 5 ) );
+			
+			icon._x = availableWidth - padding - nameField._width - 6 - icon._width;
+			nameField._x = icon._x + icon._width + 6;
+			
+			background._x = icon._x - 1 - padding;
+			background._width = padding + 1 + icon._width + 6 + nameField._width + padding;
+		}
+
+		Utils.TruncateText( nameField );
+		
+		glow._x = background._x;	
+		glow._width = background._width;
+
+		SignalGeometryChanged.Emit();
+		
 		// decorate background
 		var backgroundType:String = App.prefs.getVal( "hud.bar.background.type" );
 		background.gotoAndStop( backgroundType );
 
 		var backgroundAlpha:Number = App.prefs.getVal( "hud.bar.background.alpha" );
-		background._alpha = backgroundAlpha;
-		background._visible = backgroundAlpha > 0 && backgroundType != "none";
+		background._alpha = backgroundType == "none" ? 0 : backgroundAlpha;
 		
 		// tint background
-		if ( background._visible ) {
+		if ( background._alpha > 0 ) {
 			CommonUtils.colorize( background, checkFxPref( App.prefs.getVal( "hud.bar.background.tint" ) )
 									? App.prefs.getVal( "hud.tints.background." + _type )
 									: App.prefs.getVal( "hud.tints.background.default" ) );
@@ -193,7 +233,7 @@ class com.ElTorqiro.TargetsSquared.HUD.TargetBox extends UIComponent {
 		hitTestDisable = !App.prefs.getVal( "hud.bar.clickToSelect" );
 	}
 	
-	private function onPress() : Void {
+	private function pressHandler() : Void {
 		TargetingInterface.SetTarget( target.GetID() );
 	}
 	
@@ -231,6 +271,7 @@ class com.ElTorqiro.TargetsSquared.HUD.TargetBox extends UIComponent {
 			case "hud.bar.glow":
 			case "hud.bar.glow.size":
 			case "hud.bar.glow.intensity":
+			case "hud.bar.autosize":
 			
 				invalidate();
 				
@@ -264,6 +305,8 @@ class com.ElTorqiro.TargetsSquared.HUD.TargetBox extends UIComponent {
 	private var glow:MovieClip;
 
     private var guiResolutionScale:DistributedValue;
+	
+	private var availableWidth:Number;
 
 	/**
 	 * properties

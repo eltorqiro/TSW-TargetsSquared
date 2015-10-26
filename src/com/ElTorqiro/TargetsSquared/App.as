@@ -160,6 +160,7 @@ class com.ElTorqiro.TargetsSquared.App {
 		prefs.add( "hud.bar.healthbar.enable", true );
 		prefs.add( "hud.bar.healthbar.text", Const.e_HealthBarTextRaw );
 		prefs.add( "hud.bar.size.x", 60, { min: 60, max: 100 } );
+		prefs.add( "hud.bar.autosize", Const.e_AutoSizeNone );
 		
 		prefs.add( "hud.bar.background.type", Const.e_BackgroundTypeFlat );
 		prefs.add( "hud.bar.background.padding", 5, { min: 0, max: 30 } );

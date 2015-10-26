@@ -61,12 +61,13 @@ class com.ElTorqiro.TargetsSquared.ConfigWindow.WindowContent extends com.Compon
 
 				{	id: "hud.bar.clickToSelect",
 					type: "checkbox",
-					label: "Select target when clicked",
+					label: "Clicking box selects target",
 					tooltip: "When you click a target box, this option will select the target as your own.",
 					data: { pref: "hud.bar.clickToSelect" }
 				},
 				
-				{	type: "group"
+				{	type: "section",
+					label: "Width"
 				},
 				
 				{	id: "hud.bar.size.x",
@@ -79,6 +80,25 @@ class com.ElTorqiro.TargetsSquared.ConfigWindow.WindowContent extends com.Compon
 					data: { pref: "hud.bar.size.x" }
 				},
 
+				{	type: "group"
+				},
+				
+				{	id: "hud.bar.autosize",
+					type: "dropdown",
+					label: "AutoSize",
+					tooltip: "The auto size type to use for horizontally sizing the box based on the length of the target name.",
+					data: { pref: "hud.bar.autosize" },
+					list: [
+						{ label: "None (manual)", value: Const.e_AutoSizeNone },
+						{ label: "Left Aligned", value: Const.e_AutoSizeLeft },
+						{ label: "Right Aligned", value: Const.e_AutoSizeRight }
+					]
+				},
+
+				{	type: "text",
+					text: "AutoSize is only applied if the health bar is hidden, in which case Box Width defines the maximum available width before the target name is truncated."
+				},
+				
 				{	type: "section",
 					label: "Health Bar"
 				},
@@ -401,6 +421,7 @@ class com.ElTorqiro.TargetsSquared.ConfigWindow.WindowContent extends com.Compon
 			"hud.bar.healthbar.enable",
 			"hud.bar.healthbar.text",
 			"hud.bar.size.x",
+			"hud.bar.autosize",
 			
 			"hud.bar.background.type",
 			"hud.bar.background.padding",

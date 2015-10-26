@@ -18,7 +18,7 @@ class com.ElTorqiro.TargetsSquared.Const {
 	public static var DebugModeDV:String = "ElTorqiro_TargetsSquared_Debug";
 	
 	public static var PrefsName:String = "ElTorqiro_TargetsSquared_Preferences";
-	public static var PrefsVersion:Number = 10030;
+	public static var PrefsVersion:Number = 10010;
 	
 	public static var HudClipDepthLayer:Number = _global.Enums.ViewLayer.e_ViewLayerMiddle;
 	public static var HudClipSubDepth:Number = 2;
@@ -55,5 +55,10 @@ class com.ElTorqiro.TargetsSquared.Const {
 	public static var e_HealthBarTextNone:Number = 0;
 	public static var e_HealthBarTextRaw:Number = 1;
 	public static var e_HealthBarTextPercent:Number = 2;
+	
+	// width types for auto sizing
+	public static var e_AutoSizeNone:Number = 0;
+	public static var e_AutoSizeLeft:Number = 1;
+	public static var e_AutoSizeRight:Number = 2;
 	
 }
