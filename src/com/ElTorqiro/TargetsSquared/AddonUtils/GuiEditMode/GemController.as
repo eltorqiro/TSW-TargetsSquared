@@ -1,5 +1,6 @@
-import flash.geom.Point;
 import gfx.core.UIComponent;
+
+import flash.geom.Point;
 
 import com.ElTorqiro.TargetsSquared.AddonUtils.MovieClipHelper;
 import com.ElTorqiro.TargetsSquared.AddonUtils.GuiEditMode.GemOverlay;
@@ -7,12 +8,21 @@ import com.ElTorqiro.TargetsSquared.AddonUtils.GuiEditMode.GemOverlay;
 
 /**
  * 
+ * Provides a common interface for managing Gui Edit Mode (gem) handling for movieclips
+ * 
+ * Target clips that are to be managed by this controller should contain a SignalGeometryChanged, which is emitted whenever a change in size, scale, or position of the clip occurs.
+ * If this is not implemented, then the gem overlay for the clip will not know when the clip is moved by things other than the overlay being dragged.  This may not be important for some clips which don't move any other time.
+ * 
+ * - only create instance of the controller using the create() factory method, do not instantiate using new GemController()
  * 
  */
 class com.ElTorqiro.TargetsSquared.AddonUtils.GuiEditMode.GemController extends UIComponent {
 	
 	public static var __className:String = "com.ElTorqiro.TargetsSquared.AddonUtils.GuiEditMode.GemController";
 
+	/**
+	 * do not call this directly
+	 */
 	public function GemController() {
 
 		dragging = false;

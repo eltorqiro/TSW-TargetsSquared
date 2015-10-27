@@ -14,6 +14,7 @@ import com.ElTorqiro.TargetsSquared.AddonUtils.MovieClipHelper;
 
 /**
  * 
+ * Builds a panel full of configuration related widgets, based on a supplied definition
  * 
  */
 class com.ElTorqiro.TargetsSquared.AddonUtils.UI.PanelBuilder extends UIComponent {

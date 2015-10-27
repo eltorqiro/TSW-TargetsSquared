@@ -10,14 +10,25 @@ import com.GameInterface.LogBase;
 
 
 /**
+ * 
  * Preferences storage, usage and change event class for TSW
+ * 
+ * - use add() to create a preference entry with default & initial values
+ * - use load() to populate all defined preferences from the assigned DistributedValue (and thus, by proxy, from disk)
+ * - use getVal() to retrieve the value of a preference entry
+ * - listen for changes to preferences with SignalValueChanged [ OnPrefChanged( name, newValue, oldValue ) ] or with addEventListener
+ * - use setVal() to set the value of a preference entry
+ * - use save() to serialise and save the preference entries to the assigned DistributedValue (which will push them to disk)
+ * 
+ * - serialise() will create an Archive object from the preference entries
+ * - apply() will deserialise an Archive object and put its values into the matching preference entries
  * 
  */
 class com.ElTorqiro.TargetsSquared.AddonUtils.Preferences {
 	
 	/**
 	 * creates a new Preferences instance
-	 * @param	storeName	name of the DistributedValue to use for persistence interface
+	 * @param	storeName	optional; name of the DistributedValue to use for persistence interface
 	 */
 	public function Preferences( storeName:String ) {
 		
