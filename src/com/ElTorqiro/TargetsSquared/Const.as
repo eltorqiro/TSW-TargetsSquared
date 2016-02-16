@@ -13,12 +13,12 @@ class com.ElTorqiro.TargetsSquared.Const {
 	public static var AppID:String = "ElTorqiro_TargetsSquared";
 	public static var AppName:String = "TargetsSquared";
 	public static var AppAuthor:String = "ElTorqiro";
-	public static var AppVersion:String = "1.1.0";
+	public static var AppVersion:String = "1.2.0";
 
 	public static var DebugModeDV:String = "ElTorqiro_TargetsSquared_Debug";
 	
 	public static var PrefsName:String = "ElTorqiro_TargetsSquared_Preferences";
-	public static var PrefsVersion:Number = 10010;
+	public static var PrefsVersion:Number = 10020;
 	
 	public static var HudClipDepthLayer:Number = _global.Enums.ViewLayer.e_ViewLayerMiddle;
 	public static var HudClipSubDepth:Number = 2;
