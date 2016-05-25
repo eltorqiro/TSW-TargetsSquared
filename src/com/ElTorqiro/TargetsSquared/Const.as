@@ -25,8 +25,8 @@ class com.ElTorqiro.TargetsSquared.Const {
 	public static var HudClipSubDepthGuiEditMode:Number = 50;
 	
 	public static var IconClipPath:String = "ElTorqiro_TargetsSquared\\Icon.swf";
-	public static var IconClipDepthLayer:Number = _global.Enums.ViewLayer.e_ViewLayerMiddle;
-	public static var IconClipSubDepth:Number = 0;
+	public static var IconClipDepthLayer:Number = _global.Enums.ViewLayer.e_ViewLayerTop;
+	public static var IconClipSubDepth:Number = 2;
 	
 	public static var ConfigWindowClipPath:String = "ElTorqiro_TargetsSquared\\ConfigWindow.swf";
 	public static var ConfigWindowClipDepthLayer:Number = _global.Enums.ViewLayer.e_ViewLayerTop;
