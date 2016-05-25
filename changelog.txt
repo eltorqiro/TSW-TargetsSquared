@@ -1,6 +1,11 @@
+1.3.0 -- 2016-05-25
+
+ * change app icon depth to be in front of default topbar when not using VTIO
+
+
 1.2.0 -- 2016-02-16
 
-  * fixed compatibility issue with Issue 13's Gui Edit Mode and the mod icon when not using VTIO, which prevented the icon being manipulated
+ * fixed compatibility issue with Issue 13's Gui Edit Mode and the mod icon when not using VTIO, which prevented the icon being manipulated
 
 
 1.1.0 -- 2015-10-27
